@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h2 class="page-header">Latest Blogs</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Blog Topic</th>
+				<th>Blogger</th>
+				<th>Blogged on</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for blog in blogs %}
+			<tr>
+				<th scope="row">{{blog.id}}</th>
+				<td>{{blog.heading}}</td>
+				<td>{{blog.heading}}</td>
+				<td>{{blog.heading}}</td>
+				<td>{{blog.createdOn|date('F j, Y, g:i a')}}</td>
+				<td>{{blog.createdBy}}</td>
+				<td>
+					<a href="blog/details/{{blog.id}}" class="btn btn-success">View</a>
+					<a href="blog/edit/{{blog.id}}" class="btn btn-default">Edit</a>
+					<a href="blog/delete/{{blog.id}}" class="btn btn-danger">Delete</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
